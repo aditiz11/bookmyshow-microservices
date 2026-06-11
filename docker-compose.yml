@@ -1,0 +1,84 @@
+services:
+
+  mysql:
+
+    image: mysql:8.4
+
+    container_name: bookmyshow-mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  user-service:
+
+    image: bookmyshow/user-service:v1
+
+    container_name: user-service
+
+    ports:
+      - "8081:8081"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    depends_on:
+      - mysql
+
+  movie-service:
+
+    image: bookmyshow/movie-service:v1
+
+    container_name: movie-service
+
+    ports:
+      - "8082:8082"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    depends_on:
+      - mysql
+
+  booking-service:
+
+    image: bookmyshow/booking-service:v1
+
+    container_name: booking-service
+
+    ports:
+      - "8083:8083"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    depends_on:
+      - mysql
+
+  api-gateway:
+
+    image: bookmyshow/api-gateway:v1
+
+    container_name: api-gateway
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - user-service
+      - movie-service
+      - booking-service
+
+volumes:
+  mysql-data:
