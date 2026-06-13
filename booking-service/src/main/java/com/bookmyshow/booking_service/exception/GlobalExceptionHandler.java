@@ -44,4 +44,24 @@ public class GlobalExceptionHandler {
                         )
                 );
     }
+
+    @ExceptionHandler(SeatLockedException.class)
+    public ResponseEntity<?> handleSeatLocked(
+            SeatLockedException ex
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(
+                        Map.of(
+                                "timestamp",
+                                LocalDateTime.now(),
+
+                                "message",
+                                ex.getMessage(),
+
+                                "status",
+                                409
+                        )
+                );
+    }
 }
