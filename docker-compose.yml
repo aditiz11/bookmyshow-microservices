@@ -63,6 +63,23 @@ services:
     depends_on:
       - mysql
 
+  payment-service:
+
+    build:
+      context: ./payment-service
+
+    container_name: payment-service
+
+    ports:
+      - "8086:8086"
+
+    depends_on:
+      - mysql
+      - kafka
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
   api-gateway:
 
     image: bookmyshow/api-gateway:v1
