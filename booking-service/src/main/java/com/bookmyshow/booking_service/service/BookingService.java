@@ -9,4 +9,5 @@ public interface BookingService {
     BookingResponse createBooking(CreateBookingRequest request);
     BookingResponse getBookingById(Long id);
     List<BookingResponse> getBookingsByUserId(Long userId);
+   
 }

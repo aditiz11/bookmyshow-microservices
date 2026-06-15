@@ -28,6 +28,16 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
 
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+  redis:
+
+    image: redis:7
+
+    container_name: redis
+
+    ports:
+      - "6379:6379"
+
   mysql:
 
     image: mysql:8.4

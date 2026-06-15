@@ -7,7 +7,10 @@ import com.bookmyshow.booking_service.dto.MovieResponse;
 import com.bookmyshow.booking_service.entity.Booking;
 import com.bookmyshow.booking_service.exception.BookingNotFoundException;
 import com.bookmyshow.booking_service.exception.MovieNotFoundException;
+import com.bookmyshow.booking_service.exception.SeatLockedException;
 import com.bookmyshow.booking_service.repository.BookingRespository;
+import com.bookmyshow.booking_service.event.BookingCreatedEvent;
+import com.bookmyshow.booking_service.kafka.BookingEventProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +21,24 @@ import java.util.List;
 public class BookingServiceImpl implements BookingService{
     private final BookingRespository bookingRespository;
     private final MovieServiceClient movieServiceClient;
+    private final BookingEventProducer bookingEventProducer;
+    private final SeatLockService seatLockService;
+
     @Override
     public BookingResponse createBooking(CreateBookingRequest request) {
         try{
             MovieResponse movie = movieServiceClient.getMovieById(request.getMovieId());
         }catch (Exception e){
             throw new MovieNotFoundException("Movie not found");
+        }
+        boolean locked =
+                seatLockService.lockSeat(
+                        request.getMovieId(),
+                        request.getSeatNumber()
+                );
+
+        if(!locked){
+            throw new SeatLockedException("Seat already locked");
         }
 
         Booking booking = Booking.builder()
@@ -33,6 +48,17 @@ public class BookingServiceImpl implements BookingService{
                 .status("PENDING")
                 .build();
         Booking savedBooking = bookingRespository.save(booking);
+
+        BookingCreatedEvent event =
+                new BookingCreatedEvent(
+                        savedBooking.getId(),
+                        savedBooking.getUserId(),
+                        savedBooking.getMovieId(),
+                        savedBooking.getSeatNumber()
+                );
+
+        bookingEventProducer.publishBookingCreated(event);
+
         return mapToResponse(savedBooking);
     }
 
