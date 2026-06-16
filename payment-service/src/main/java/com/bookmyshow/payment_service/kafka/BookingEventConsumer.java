@@ -18,9 +18,12 @@ public class BookingEventConsumer {
             topics = "booking-created",
             groupId = "payment-group"
     )
-    public void consume(
-            BookingCreatedEvent event
-    ) {
+    public void consume(BookingCreatedEvent event) {
+
+        log.info("================================");
+        log.info("PAYMENT EVENT RECEIVED");
+        log.info("Booking Id = {}", event.bookingId());
+        log.info("================================");
 
         Payment payment =
                 Payment.builder()
