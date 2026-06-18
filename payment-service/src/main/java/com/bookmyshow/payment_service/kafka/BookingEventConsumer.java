@@ -2,6 +2,8 @@ package com.bookmyshow.payment_service.kafka;
 
 import com.bookmyshow.payment_service.entity.Payment;
 import com.bookmyshow.payment_service.event.BookingCreatedEvent;
+import com.bookmyshow.payment_service.event.PaymentCompletedEvent;
+import com.bookmyshow.payment_service.event.PaymentFailedEvent;
 import com.bookmyshow.payment_service.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class BookingEventConsumer {
+
     private final PaymentRepository paymentRepository;
+    private final PaymentEventProducer paymentEventProducer;
 
     @KafkaListener(
             topics = "booking-created",
@@ -32,11 +36,44 @@ public class BookingEventConsumer {
                         .status("PENDING")
                         .build();
 
-        paymentRepository.save(payment);
+        Payment savedPayment = paymentRepository.save(payment);
 
-        log.info(
-                "Payment Created For Booking {}",
-                event.bookingId()
-        );
+        // SAGA RULE (YOUR OPTION A)
+        boolean isSuccess = event.bookingId() % 2 == 0;
+
+        if (isSuccess) {
+
+            // SUCCESS PATH
+            savedPayment.setStatus("COMPLETED");
+            savedPayment = paymentRepository.save(savedPayment);
+
+            PaymentCompletedEvent successEvent =
+                    new PaymentCompletedEvent(
+                            savedPayment.getBookingId(),
+                            savedPayment.getId(),
+                            savedPayment.getStatus()
+                    );
+
+            paymentEventProducer.publishPaymentCompleted(successEvent);
+
+            log.info("PAYMENT SUCCESS for booking {}", savedPayment.getBookingId());
+
+        } else {
+
+            // FAILURE PATH
+            savedPayment.setStatus("FAILED");
+            savedPayment = paymentRepository.save(savedPayment);
+
+            PaymentFailedEvent failedEvent =
+                    new PaymentFailedEvent(
+                            savedPayment.getBookingId(),
+                            savedPayment.getId(),
+                            savedPayment.getStatus()
+                    );
+
+            paymentEventProducer.publishPaymentFailed(failedEvent);
+
+            log.info("PAYMENT FAILED for booking {}", savedPayment.getBookingId());
+        }
     }
 }
