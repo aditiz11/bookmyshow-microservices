@@ -19,7 +19,8 @@ public class PaymentFailedConsumer {
 
     @KafkaListener(
             topics = "payment-failed",
-            groupId = "booking-group"
+            groupId = "booking-group",
+            containerFactory = "paymentFailedKafkaListenerContainerFactory"
     )
     public void consume(PaymentFailedEvent event) {
 

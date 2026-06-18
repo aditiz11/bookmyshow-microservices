@@ -1,6 +1,7 @@
 package com.bookmyshow.booking_service.config;
 
 import com.bookmyshow.booking_service.event.PaymentCompletedEvent;
+import com.bookmyshow.booking_service.event.PaymentFailedEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -56,6 +57,46 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<
                         String,
                         PaymentCompletedEvent> factory =
+                new ConcurrentKafkaListenerContainerFactory<>();
+
+        factory.setConsumerFactory(consumerFactory);
+
+        return factory;
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, PaymentFailedEvent>
+    paymentFailedKafkaListenerContainerFactory() {
+
+        Map<String, Object> props = new HashMap<>();
+
+        props.put(
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                kafkaProperties.getBootstrapServers().get(0)
+        );
+
+        props.put(
+                ConsumerConfig.GROUP_ID_CONFIG,
+                "booking-group"
+        );
+
+        JsonDeserializer<PaymentFailedEvent> deserializer =
+                new JsonDeserializer<>(PaymentFailedEvent.class);
+
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeHeaders(false);
+
+        DefaultKafkaConsumerFactory<String, PaymentFailedEvent>
+                consumerFactory =
+                new DefaultKafkaConsumerFactory<>(
+                        props,
+                        new StringDeserializer(),
+                        deserializer
+                );
+
+        ConcurrentKafkaListenerContainerFactory<
+                String,
+                PaymentFailedEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
 
         factory.setConsumerFactory(consumerFactory);
