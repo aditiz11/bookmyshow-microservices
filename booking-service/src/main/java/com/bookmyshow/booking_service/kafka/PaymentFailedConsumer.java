@@ -28,7 +28,11 @@ public class PaymentFailedConsumer {
         Booking booking = bookingRepository.findById(event.bookingId())
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
 
-        // 1. Update booking status → CANCELLED
+        if("CANCELLED".equals(booking.getStatus())) {
+
+            log.warn("Booking {} already cancelled", booking.getId());
+            return;
+        }
         booking.setStatus("CANCELLED");
         bookingRepository.save(booking);
 

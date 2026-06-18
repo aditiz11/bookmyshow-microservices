@@ -29,6 +29,11 @@ public class PaymentCompletedConsumer {
                         .findById(event.bookingId())
                         .orElseThrow();
 
+        if("CONFIRMED".equals(booking.getStatus())) {
+            log.warn("Booking {} already confirmed", booking.getId());
+            return;
+        }
+
         booking.setStatus("CONFIRMED");
 
         bookingRespository.save(booking);

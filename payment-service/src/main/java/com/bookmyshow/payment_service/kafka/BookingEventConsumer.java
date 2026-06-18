@@ -29,6 +29,16 @@ public class BookingEventConsumer {
         log.info("Booking Id = {}", event.bookingId());
         log.info("================================");
 
+        Payment existingPayment = paymentRepository
+                        .findByBookingId(event.bookingId())
+                        .orElse(null);
+
+        if(existingPayment != null) {
+
+            log.warn("Duplicate booking-created received for booking {}", event.bookingId());
+            return;
+        }
+
         Payment payment =
                 Payment.builder()
                         .bookingId(event.bookingId())
