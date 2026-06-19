@@ -103,8 +103,7 @@ services:
 
   payment-service:
 
-    build:
-      context: ./payment-service
+    image: bookmyshow/payment-service:v1
 
     container_name: payment-service
 
