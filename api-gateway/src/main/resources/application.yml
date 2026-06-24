@@ -9,22 +9,33 @@ spring:
     gateway:
       server:
         webflux:
+
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+
           routes:
 
             - id: user-service
-              uri: http://localhost:8081
+              uri: lb://user-service
               predicates:
                 - Path=/api/users/**
 
             - id: movie-service
-              uri: http://localhost:8082
+              uri: lb://movie-service
               predicates:
                 - Path=/api/movies/**
 
             - id: booking-service
-              uri: http://localhost:8083
+              uri: lb://booking-service
               predicates:
                 - Path=/api/bookings/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
 management:
   endpoints:

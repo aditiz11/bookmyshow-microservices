@@ -56,6 +56,18 @@ services:
       - mysql-data:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  eureka-server:
+
+    image: bookmyshow/eureka-server:v1
+
+    container_name: eureka-server
+
+    ports:
+      - "8761:8761"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
   user-service:
 
     image: bookmyshow/user-service:v1
@@ -70,6 +82,7 @@ services:
 
     depends_on:
       - mysql
+      - eureka-server
 
   movie-service:
 
@@ -85,6 +98,7 @@ services:
 
     depends_on:
       - mysql
+      - eureka-server
 
   booking-service:
 
@@ -100,11 +114,11 @@ services:
 
     depends_on:
       - mysql
+      - eureka-server
 
   payment-service:
 
-    build:
-      context: ./payment-service
+    image: bookmyshow/payment-service:v1
 
     container_name: payment-service
 
@@ -114,6 +128,7 @@ services:
     depends_on:
       - mysql
       - kafka
+      - eureka-server
 
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -131,6 +146,7 @@ services:
       - "8080:8080"
 
     depends_on:
+      - eureka-server
       - user-service
       - movie-service
       - booking-service
@@ -146,6 +162,7 @@ services:
 
     depends_on:
       - kafka
+      - eureka-server
 
     environment:
       SPRING_PROFILES_ACTIVE: docker
