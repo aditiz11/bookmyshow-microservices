@@ -11,6 +11,7 @@ import com.bookmyshow.booking_service.exception.SeatLockedException;
 import com.bookmyshow.booking_service.repository.BookingRespository;
 import com.bookmyshow.booking_service.event.BookingCreatedEvent;
 import com.bookmyshow.booking_service.kafka.BookingEventProducer;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,7 @@ public class BookingServiceImpl implements BookingService{
 
         BookingCreatedEvent event =
                 new BookingCreatedEvent(
+                        UUID.randomUUID().toString(),
                         savedBooking.getId(),
                         savedBooking.getUserId(),
                         savedBooking.getMovieId(),
