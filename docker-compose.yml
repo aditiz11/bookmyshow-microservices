@@ -167,5 +167,42 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: docker
 
+  prometheus:
+    image: prom/prometheus
+
+    container_name: prometheus
+
+    ports:
+      - "9090:9090"
+
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+    depends_on:
+      - api-gateway
+      - user-service
+      - movie-service
+      - booking-service
+      - payment-service
+      - notification-service
+
+  grafana:
+    image: grafana/grafana:latest
+
+    container_name: grafana
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+    depends_on:
+      - prometheus
+
+    volumes:
+      - grafana-storage:/var/lib/grafana
 volumes:
   mysql-data:
+  grafana-storage:
