@@ -33,7 +33,8 @@ public class SecurityConfig {
                         auth
                                 .requestMatchers(
                                         "/api/users/register",
-                                        "/api/users/login"
+                                        "/api/users/login",
+                                        "/actuator/**"
                                 )
                                 .permitAll()
                                 .anyRequest()
