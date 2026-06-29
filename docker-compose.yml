@@ -210,6 +210,33 @@ services:
 
     ports:
       - "9411:9411"
+
+  loki:
+    image: grafana/loki:2.9.8
+    container_name: loki
+
+    command: -config.file=/etc/loki/local-config.yaml
+
+    ports:
+      - "3100:3100"
+
+    volumes:
+      - ./loki-config.yml:/etc/loki/local-config.yaml
+
+  promtail:
+    image: grafana/promtail:2.9.8
+    container_name: promtail
+
+    command: -config.file=/etc/promtail/config.yml
+
+    volumes:
+      - ./promtail-config.yml:/etc/promtail/config.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+
+    depends_on:
+      - loki
+
 volumes:
   mysql-data:
   grafana-storage:
