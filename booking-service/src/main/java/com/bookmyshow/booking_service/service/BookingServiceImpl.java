@@ -14,6 +14,9 @@ import com.bookmyshow.booking_service.kafka.BookingEventProducer;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,19 +29,22 @@ public class BookingServiceImpl implements BookingService{
     private final SeatLockService seatLockService;
 
     @Override
+    @CircuitBreaker(
+            name = "movieService",
+            fallbackMethod = "createBookingFallback"
+    )
     public BookingResponse createBooking(CreateBookingRequest request) {
-        try{
-            MovieResponse movie = movieServiceClient.getMovieById(request.getMovieId());
-        }catch (Exception e){
-            throw new MovieNotFoundException("Movie not found");
-        }
+
+        MovieResponse movie =
+                movieServiceClient.getMovieById(request.getMovieId());
+
         boolean locked =
                 seatLockService.lockSeat(
                         request.getMovieId(),
                         request.getSeatNumber()
                 );
 
-        if(!locked){
+        if (!locked) {
             throw new SeatLockedException("Seat already locked");
         }
 
@@ -48,6 +54,7 @@ public class BookingServiceImpl implements BookingService{
                 .seatNumber(request.getSeatNumber())
                 .status("PENDING")
                 .build();
+
         Booking savedBooking = bookingRespository.save(booking);
 
         BookingCreatedEvent event =
@@ -63,7 +70,6 @@ public class BookingServiceImpl implements BookingService{
 
         return mapToResponse(savedBooking);
     }
-
     @Override
     public BookingResponse getBookingById(Long id) {
         Booking booking = bookingRespository
@@ -91,5 +97,15 @@ public class BookingServiceImpl implements BookingService{
                 .seatNumber(booking.getSeatNumber())
                 .status(booking.getStatus())
                 .build();
+    }
+
+    public BookingResponse createBookingFallback(
+            CreateBookingRequest request,
+            Exception ex
+    ) {
+        throw new ResponseStatusException(
+                HttpStatus.SERVICE_UNAVAILABLE,
+                "Movie Service is currently unavailable. Please try again later."
+        );
     }
 }
