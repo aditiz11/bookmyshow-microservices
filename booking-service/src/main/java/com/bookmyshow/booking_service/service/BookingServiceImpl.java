@@ -108,9 +108,18 @@ public class BookingServiceImpl implements BookingService{
             Throwable ex
     ) {
         log.error("Fallback called. Cause: {}", ex.getClass().getSimpleName());
+
+        if (ex instanceof SeatLockedException) {
+            throw (SeatLockedException) ex;
+        }
+
+        if (ex instanceof MovieNotFoundException) {
+            throw (MovieNotFoundException) ex;
+        }
+
         throw new ResponseStatusException(
                 HttpStatus.SERVICE_UNAVAILABLE,
-                "Movie Service is currently unavailable. Please try again later."
+                "Movie Service is currently unavailable"
         );
     }
 }
