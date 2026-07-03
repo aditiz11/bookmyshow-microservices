@@ -12,14 +12,17 @@ import com.bookmyshow.booking_service.repository.BookingRespository;
 import com.bookmyshow.booking_service.event.BookingCreatedEvent;
 import com.bookmyshow.booking_service.kafka.BookingEventProducer;
 import java.util.UUID;
+
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
-
+import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService{
@@ -29,12 +32,13 @@ public class BookingServiceImpl implements BookingService{
     private final SeatLockService seatLockService;
 
     @Override
+    @Retry(name = "movieService")
     @CircuitBreaker(
             name = "movieService",
             fallbackMethod = "createBookingFallback"
     )
     public BookingResponse createBooking(CreateBookingRequest request) {
-
+        log.info("Calling Movie Service at {}", java.time.LocalTime.now());
         MovieResponse movie =
                 movieServiceClient.getMovieById(request.getMovieId());
 
@@ -101,8 +105,9 @@ public class BookingServiceImpl implements BookingService{
 
     public BookingResponse createBookingFallback(
             CreateBookingRequest request,
-            Exception ex
+            Throwable ex
     ) {
+        log.error("Fallback called. Cause: {}", ex.getClass().getSimpleName());
         throw new ResponseStatusException(
                 HttpStatus.SERVICE_UNAVAILABLE,
                 "Movie Service is currently unavailable. Please try again later."
