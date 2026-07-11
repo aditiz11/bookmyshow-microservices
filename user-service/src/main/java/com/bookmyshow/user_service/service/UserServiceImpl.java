@@ -7,6 +7,7 @@ import com.bookmyshow.user_service.exception.UserAlreadyExistsException;
 import com.bookmyshow.user_service.exception.UserNotFoundException;
 import com.bookmyshow.user_service.repository.UserRepository;
 import com.bookmyshow.user_service.security.JwtUtil;
+import com.bookmyshow.user_service.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.ROLE_USER)
                 .build();
         User savedUser = userRepository.save(user);
 
@@ -65,7 +67,8 @@ public class UserServiceImpl implements UserService {
         }
 
         String token = jwtUtil.generateToken(
-                user.getEmail()
+                user.getEmail(),
+                user.getRole().name()
         );
 
         return LoginResponse.builder()

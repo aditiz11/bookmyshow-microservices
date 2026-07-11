@@ -5,6 +5,7 @@ import com.bookmyshow.movie_service.dto.MovieResponse;
 import com.bookmyshow.movie_service.service.MovieService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +14,14 @@ import java.util.List;
 @RequestMapping("/api/movies")
 @RequiredArgsConstructor
 public class MovieController {
+
     private final MovieService movieService;
 
     @PostMapping
-    public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest request) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public MovieResponse createMovie(
+            @Valid @RequestBody CreateMovieRequest request) {
+
         return movieService.createMovie(request);
     }
 
@@ -26,7 +31,26 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public MovieResponse getMovieById(@PathVariable Long id) {
+    public MovieResponse getMovieById(
+            @PathVariable Long id) {
+
         return movieService.getMovieById(id);
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public MovieResponse updateMovie(
+            @PathVariable Long id,
+            @Valid @RequestBody CreateMovieRequest request) {
+
+        return movieService.updateMovie(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deleteMovie(
+            @PathVariable Long id) {
+
+        movieService.deleteMovie(id);
     }
 }
