@@ -16,7 +16,11 @@ public class SeatLockServiceImpl implements SeatLockService {
 
     @Override
     public boolean lockSeat(Long movieId, String seatNumber) {
-        String key = "seat:"  + movieId + ":" + seatNumber;
+
+        String key = "seat:" + movieId + ":" + seatNumber;
+
+        log.info("Trying to lock key: {}", key);
+
         Boolean success = redisTemplate
                 .opsForValue()
                 .setIfAbsent(
@@ -24,6 +28,9 @@ public class SeatLockServiceImpl implements SeatLockService {
                         "LOCKED",
                         Duration.ofMinutes(5)
                 );
+
+        log.info("Lock result: {}", success);
+
         return Boolean.TRUE.equals(success);
     }
 

@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/* =========================
+RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    min-height:100vh;
+    background:#050505;
+    color:#fff;
+    font-family:"Inter","Poppins",system-ui,sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at top,rgba(220,38,38,.18),transparent 35%),
+        radial-gradient(circle at bottom,rgba(30,64,175,.15),transparent 40%);
+    z-index:-1;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    font:inherit;
+}
+
+input,
+textarea,
+select{
+    outline:none;
+    color:#fff;
+    background:rgba(15,23,42,.8);
+    font:inherit;
+}
+
+
+/* =========================
+SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#dc2626;
+    border-radius:20px;
+}
+
+
+/* =========================
+COMMON LAYOUT
+========================= */
+
+.page-container{
+    width:100%;
+    min-height:100vh;
+    padding:50px 70px;
+}
+
+.section-container{
+    width:100%;
+    padding:60px 70px;
+}
+
+
+/* =========================
+GLASS CARD
+========================= */
+
+.glass{
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+
+/* =========================
+BUTTONS
+========================= */
+
+.primary-btn{
+    padding:14px 35px;
+    border-radius:16px;
+    font-weight:800;
+    color:#fff;
+    background:linear-gradient(135deg,#dc2626,#991b1b);
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(220,38,38,.45);
+}
+
+
+/* =========================
+ANIMATIONS
+========================= */
+
+.fade-in{
+    animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================
+LOADING
+========================= */
+
+.loading-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:700;
+}
+
+
+/* =========================
+FOOTER BASE
+========================= */
+
+footer{
+    margin-top:100px;
+    padding:35px;
+    background:#020617;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .page-container{
+        padding:25px;
+    }
+
+    .section-container{
+        padding:40px 25px;
+    }
+
+}

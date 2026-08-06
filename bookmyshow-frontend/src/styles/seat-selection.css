@@ -1,0 +1,276 @@
+/* =========================
+SEAT GRID
+========================= */
+
+.seat-grid{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-top:40px;
+}
+
+.seat-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    transition:.3s;
+}
+
+.seat-row:hover{
+    transform:scale(1.02);
+}
+
+.seat-row-label{
+    width:30px;
+    text-align:center;
+    font-weight:800;
+    color:#cbd5e1;
+}
+
+.seat-block{
+    display:flex;
+    gap:8px;
+}
+
+.seat-gap{
+    width:35px;
+}
+
+/* =========================
+SEAT BUTTONS
+========================= */
+
+.seat-button{
+    width:46px;
+    height:46px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.15);
+    font-size:13px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.seat-button:hover{
+    transform:scale(1.12);
+    box-shadow:0 0 20px rgba(255,255,255,.25);
+}
+
+.seat-premium{
+    background:#4c1d95;
+    color:#fff;
+}
+
+.seat-executive{
+    background:#0369a1;
+    color:#fff;
+}
+
+.seat-regular{
+    background:#047857;
+    color:#fff;
+}
+
+.seat-selected{
+    background:#facc15;
+    color:#020617;
+    transform:scale(1.12);
+    box-shadow:0 0 25px rgba(250,204,21,.7);
+}
+
+.seat-booked{
+    background:#991b1b;
+    color:#fecaca;
+    cursor:not-allowed;
+    opacity:.65;
+}
+
+/* =========================
+SEAT LEGEND
+========================= */
+
+.seat-legend-card{
+    width:100%;
+    margin-top:45px;
+    padding:35px;
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.seat-legend-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.legend-box,
+.state-box{
+    width:25px;
+    height:25px;
+    border-radius:7px;
+}
+
+.legend-item p{
+    color:#fff;
+    font-weight:700;
+}
+
+.legend-item span{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.legend-premium{
+    background:#7c3aed;
+}
+
+.legend-executive{
+    background:#0284c7;
+}
+
+.legend-regular{
+    background:#059669;
+}
+
+.legend-booked{
+    background:#991b1b;
+}
+
+.legend-divider{
+    height:1px;
+    margin:30px 0;
+    background:#334155;
+}
+
+.seat-state-list{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.seat-state-list div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+}
+
+.state-selected{
+    background:#facc15;
+}
+
+.state-booked{
+    background:#991b1b;
+}
+
+.state-premium{
+    background:#7c3aed;
+}
+
+.state-executive{
+    background:#0284c7;
+}
+
+.state-regular{
+    background:#059669;
+}
+
+/* =========================
+SEAT TYPE CARDS
+========================= */
+
+.seat-type-container{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:35px;
+}
+
+.seat-type-card{
+    padding:30px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+}
+
+.seat-type-card h3{
+    font-size:24px;
+    font-weight:900;
+}
+
+.seat-type-card p{
+    margin-top:8px;
+    color:#cbd5e1;
+}
+
+.seat-type-card strong{
+    display:block;
+    margin-top:15px;
+    font-size:28px;
+}
+
+.premium-card{
+    border:1px solid #7c3aed;
+}
+
+.executive-card{
+    border:1px solid #0284c7;
+}
+
+.regular-card{
+    border:1px solid #059669;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .seat-row{
+        gap:8px;
+    }
+
+    .seat-block{
+        gap:5px;
+    }
+
+    .seat-gap{
+        width:18px;
+    }
+
+    .seat-button{
+        width:34px;
+        height:34px;
+        font-size:10px;
+    }
+
+    .seat-row-label{
+        width:22px;
+        font-size:12px;
+    }
+
+    .seat-legend-grid{
+        grid-template-columns:1fr;
+    }
+
+    .seat-type-container{
+        grid-template-columns:1fr;
+    }
+
+    .seat-state-list{
+        gap:18px;
+    }
+}

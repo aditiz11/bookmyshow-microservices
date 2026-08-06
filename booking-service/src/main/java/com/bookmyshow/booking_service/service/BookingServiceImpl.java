@@ -5,6 +5,7 @@ import com.bookmyshow.booking_service.dto.BookingResponse;
 import com.bookmyshow.booking_service.dto.CreateBookingRequest;
 import com.bookmyshow.booking_service.dto.MovieResponse;
 import com.bookmyshow.booking_service.entity.Booking;
+import com.bookmyshow.booking_service.event.BookingCancelledEvent;
 import com.bookmyshow.booking_service.exception.BookingNotFoundException;
 import com.bookmyshow.booking_service.exception.MovieNotFoundException;
 import com.bookmyshow.booking_service.exception.SeatLockedException;
@@ -37,11 +38,16 @@ public class BookingServiceImpl implements BookingService{
             name = "movieService",
             fallbackMethod = "createBookingFallback"
     )
-    public BookingResponse createBooking(CreateBookingRequest request) {
+    public BookingResponse createBooking(
+            CreateBookingRequest request,
+            Long userId
+    ){
         log.info("Calling Movie Service at {}", java.time.LocalTime.now());
+        log.info("Step 1: Calling movie service");
         MovieResponse movie =
                 movieServiceClient.getMovieById(request.getMovieId());
 
+        log.info("Step 2: Movie found {}", movie);
         boolean locked =
                 seatLockService.lockSeat(
                         request.getMovieId(),
@@ -52,13 +58,15 @@ public class BookingServiceImpl implements BookingService{
             throw new SeatLockedException("Seat already locked");
         }
 
+        log.info("Step 3: Lock result {}", locked);
         Booking booking = Booking.builder()
-                .userId(request.getUserId())
+                .userId(userId)
                 .movieId(request.getMovieId())
                 .seatNumber(request.getSeatNumber())
                 .status("PENDING")
                 .build();
 
+        log.info("Step 4: Saving booking");
         Booking savedBooking = bookingRespository.save(booking);
 
         BookingCreatedEvent event =
@@ -70,8 +78,10 @@ public class BookingServiceImpl implements BookingService{
                         savedBooking.getSeatNumber()
                 );
 
+        log.info("Step 5: Saved booking {}", savedBooking.getId());
         bookingEventProducer.publishBookingCreated(event);
 
+        log.info("Step 6: Event published");
         return mapToResponse(savedBooking);
     }
     @Override
@@ -121,5 +131,44 @@ public class BookingServiceImpl implements BookingService{
                 HttpStatus.SERVICE_UNAVAILABLE,
                 "Movie Service is currently unavailable"
         );
+    }
+
+    @Override
+    public BookingResponse cancelBooking(Long bookingId) {
+
+        Booking booking = bookingRespository
+                .findById(bookingId)
+                .orElseThrow(() ->
+                        new BookingNotFoundException("Booking not found"));
+
+        if ("CANCELLED".equals(booking.getStatus())) {
+            return mapToResponse(booking);
+        }
+
+        booking.setStatus("CANCELLED");
+
+        Booking updatedBooking = bookingRespository.save(booking);
+
+        BookingCancelledEvent event =
+                new BookingCancelledEvent(
+                        UUID.randomUUID().toString(),
+                        updatedBooking.getId(),
+                        updatedBooking.getUserId(),
+                        updatedBooking.getMovieId(),
+                        updatedBooking.getSeatNumber()
+                );
+
+        bookingEventProducer.publishBookingCancelled(event);
+        return mapToResponse(updatedBooking);
+    }
+
+    @Override
+    public List<BookingResponse> getAllBookings() {
+
+        return bookingRespository
+                .findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
     }
 }

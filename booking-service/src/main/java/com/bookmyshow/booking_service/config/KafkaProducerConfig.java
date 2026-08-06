@@ -1,6 +1,5 @@
 package com.bookmyshow.booking_service.config;
 
-import com.bookmyshow.booking_service.event.BookingCreatedEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +16,7 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Bean
-    public ProducerFactory<String, BookingCreatedEvent> producerFactory() {
+    public ProducerFactory<String, Object> producerFactory() {
 
         Map<String, Object> config = new HashMap<>();
 
@@ -36,7 +35,6 @@ public class KafkaProducerConfig {
                 JsonSerializer.class
         );
 
-        // IMPORTANT
         config.put(
                 JsonSerializer.ADD_TYPE_INFO_HEADERS,
                 false
@@ -46,7 +44,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, BookingCreatedEvent> kafkaTemplate() {
+    public KafkaTemplate<String, Object> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

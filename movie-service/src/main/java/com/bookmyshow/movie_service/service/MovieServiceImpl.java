@@ -25,6 +25,7 @@ public class MovieServiceImpl implements MovieService {
                 .duration(request.getDuration())
                 .language(request.getLanguage())
                 .description(request.getDescription())
+                .posterUrl(request.getPosterUrl())
                 .build();
 
         Movie savedMovie = movieRepository.save(movie);
@@ -65,6 +66,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setDuration(request.getDuration());
         movie.setLanguage(request.getLanguage());
         movie.setDescription(request.getDescription());
+        movie.setPosterUrl(request.getPosterUrl());
 
         Movie updatedMovie = movieRepository.save(movie);
 
@@ -90,6 +92,7 @@ public class MovieServiceImpl implements MovieService {
                 .duration(movie.getDuration())
                 .language(movie.getLanguage())
                 .description(movie.getDescription())
+                .posterUrl(movie.getPosterUrl())
                 .build();
     }
 }

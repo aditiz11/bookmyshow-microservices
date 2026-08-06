@@ -57,7 +57,7 @@ public class BookingEventConsumer {
         Payment savedPayment = paymentRepository.save(payment);
 
         // SAGA RULE (YOUR OPTION A)
-        boolean isSuccess = event.bookingId() % 2 == 0;
+        boolean isSuccess = true;
 
         if (isSuccess) {
 

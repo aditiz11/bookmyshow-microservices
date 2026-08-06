@@ -1,0 +1,238 @@
+/* =========================
+HOME PAGE
+========================= */
+
+.home-page{
+    min-height:100vh;
+    padding-top:0;
+    background:
+        radial-gradient(circle at top left,rgba(59,130,blue,.18),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(37,99,235,.15),transparent 35%),
+        linear-gradient(180deg,#020617 0%,#07111f 45%,#081421 100%);
+}
+
+.loading-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:700;
+    color:#f3f4f6;
+}
+
+.home-content{
+    position:relative;
+    margin-top:-45px;
+    padding:0 0 70px;
+    z-index:10;
+}
+
+.home-section{
+    max-width:1500px;
+    margin:auto;
+    padding:0 50px;
+}
+
+
+/* =========================
+HERO BANNER
+========================= */
+
+.hero-banner{
+    width:100%;
+    position:relative;
+}
+.hero-slide{
+    width:100%;
+    height:600px;
+    position:relative;
+    overflow:hidden;
+}
+.hero-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.55),
+            transparent
+        );
+}
+.hero-content{
+    position:absolute;
+    left:60px;
+    bottom:80px;
+    max-width:600px;
+}
+.hero-title{
+    font-size:56px;
+    font-weight:900;
+    color:white;
+    letter-spacing:-2px;
+}
+.hero-details{
+    margin-top:18px;
+    font-size:20px;
+    color:#d1d5db;
+}
+
+/* =========================
+MOVIE SECTION
+========================= */
+
+.movie-section{
+    width:100%;
+    padding:40px 70px 70px;
+}
+
+.movie-section-title{
+    margin-bottom:40px;
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:#fff;
+}
+
+.movie-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:34px;
+}
+
+.movie-card-link{
+    display:block;
+}
+
+
+/* =========================
+MOVIE CARD
+========================= */
+
+.movie-card{
+    overflow:hidden;
+    border-radius:22px;
+    background:#0f172a;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 15px 45px rgba(0,0,0,.45);
+    transition:.35s;
+}
+
+.movie-card:hover{
+    transform:translateY(-12px);
+    border-color:rgba(59,130,blue,.35);
+    box-shadow:0 25px 60px rgba(37,99,235,.35);
+}
+
+.movie-card-image-wrapper{
+    overflow:hidden;
+}
+
+.movie-card-image{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+    transition:.45s;
+}
+
+.movie-card:hover .movie-card-image{
+    transform:scale(1.08);
+}
+
+.movie-card-content{
+    padding:22px;
+}
+
+.movie-card-title{
+    overflow:hidden;
+    font-size:20px;
+    font-weight:800;
+    color:#fff;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.movie-card-genre{
+    margin-top:12px;
+    color:#9ca3af;
+}
+
+.movie-card-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:14px;
+    font-size:14px;
+    color:#6b7280;
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .movie-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
+
+@media(max-width:900px){
+
+    .hero-title{
+        font-size:42px;
+    }
+
+    .movie-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .home-section{
+        padding:0 20px;
+    }
+
+    .movie-section{
+        padding:30px 20px;
+    }
+
+    .movie-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+    }
+
+    .hero-banner{
+        height:500px;
+    }
+
+    .hero-content{
+        left:24px;
+        right:24px;
+        bottom:50px;
+    }
+
+    .hero-title{
+        font-size:34px;
+    }
+
+    .hero-details{
+        font-size:16px;
+    }
+
+    .movie-card-image{
+        height:300px;
+    }
+
+}

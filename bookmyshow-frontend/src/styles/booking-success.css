@@ -1,0 +1,218 @@
+/* =========================
+BOOKING SUCCESS PAGE
+========================= */
+
+.booking-success-page{
+    min-height:100vh;
+    padding:70px 20px;
+    background:
+        radial-gradient(circle at top,rgba(59,130,246,.18),transparent 35%),
+        radial-gradient(circle at bottom,rgba(34,197,94,.15),transparent 40%),
+        linear-gradient(135deg,#020617,#0f172a,#111827);
+}
+
+.booking-success-container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+    padding:50px;
+    border-radius:35px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 40px 100px rgba(0,0,0,.7);
+}
+
+/* =========================
+EMPTY STATE
+========================= */
+
+.booking-empty-card{
+    max-width:520px;
+    margin:auto;
+    padding:50px;
+    border-radius:28px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 25px 60px rgba(0,0,0,.55);
+}
+
+.booking-empty-card h1{
+    font-size:42px;
+    font-weight:900;
+    color:#fff;
+    margin-bottom:35px;
+}
+
+/* =========================
+SUCCESS HEADER
+========================= */
+
+.success-animation{
+    display:flex;
+    justify-content:center;
+    color:#22c55e;
+}
+
+.success-title{
+    margin-top:25px;
+    font-size:54px;
+    font-weight:900;
+    color:#fff;
+}
+
+.success-subtitle{
+    margin-top:12px;
+    font-size:18px;
+    color:#9ca3af;
+}
+
+/* =========================
+TICKET LIST
+========================= */
+
+.ticket-list{
+    margin-top:55px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+/* =========================
+SUCCESS ACTIONS
+========================= */
+
+.success-actions{
+    margin-top:55px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.success-primary-button{
+    padding:14px 34px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+}
+
+.success-primary-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px rgba(37,99,235,.45);
+}
+
+.success-secondary-button{
+    padding:14px 34px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.success-secondary-button:hover{
+    border-color:#3b82f6;
+    background:rgba(59,130,246,.12);
+    transform:translateY(-3px);
+}
+
+/* =========================
+BOOKING FOOTER
+========================= */
+
+.booking-footer{
+    margin-top:24px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.payment-section{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.payment-label{
+    color:#9ca3af;
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:600;
+}
+
+/* =========================
+CANCEL BUTTON
+========================= */
+
+.cancel-booking-btn{
+    padding:12px 22px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+    color:#fff;
+    font-weight:700;
+    font-size:.95rem;
+    cursor:pointer;
+    transition:.25s ease;
+    box-shadow:0 10px 25px rgba(239,68,68,.3);
+}
+
+.cancel-booking-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 35px rgba(239,68,68,.45);
+}
+
+.cancel-booking-btn:active{
+    transform:scale(.97);
+}
+
+.cancel-booking-btn::before{
+    content:"🗙";
+    margin-right:8px;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .booking-success-page{
+        padding:25px;
+    }
+
+    .booking-success-container{
+        padding:30px;
+    }
+
+    .success-title{
+        font-size:32px;
+    }
+
+    .success-actions{
+        flex-direction:column;
+    }
+
+    .booking-footer{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .cancel-booking-btn{
+        width:100%;
+    }
+}

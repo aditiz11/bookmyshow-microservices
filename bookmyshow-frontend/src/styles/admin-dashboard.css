@@ -1,0 +1,236 @@
+/* =========================
+ADMIN DASHBOARD
+========================= */
+
+.admin-dashboard{
+    min-height:100vh;
+    color:#fff;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.admin-dashboard-header{
+    margin-bottom:45px;
+}
+
+.admin-dashboard-title{
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:-1px;
+    background:linear-gradient(90deg,#60a5fa,#38bdf8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.admin-dashboard-subtitle{
+    margin-top:10px;
+    color:#94a3b8;
+    font-size:18px;
+}
+
+/* =========================
+STAT CARDS
+========================= */
+
+.dashboard-stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+    margin-bottom:55px;
+}
+
+.dashboard-stat-card{
+    position:relative;
+    min-height:190px;
+    padding:32px;
+    overflow:hidden;
+    border-radius:26px;
+    background:
+        linear-gradient(145deg,rgba(30,64,175,.35),rgba(15,23,42,.95));
+    border:1px solid rgba(96,165,250,.2);
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+    transition:.3s ease;
+}
+
+.dashboard-stat-card:hover{
+    transform:translateY(-8px);
+    border-color:#60a5fa;
+    box-shadow:0 30px 80px rgba(37,99,235,.35);
+}
+
+.dashboard-stat-top{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
+}
+
+.dashboard-stat-icon{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:25px;
+    border-radius:20px;
+    font-size:34px;
+    background:rgba(59,130,246,.15);
+}
+
+.dashboard-stat-title{
+    color:#94a3b8;
+    font-size:17px;
+    font-weight:600;
+}
+
+.dashboard-stat-value{
+    margin-top:8px;
+    font-size:44px;
+    font-weight:900;
+    color:#fff;
+}
+
+/* =========================
+BOOKING OVERVIEW
+========================= */
+
+.booking-overview{
+    margin-bottom:55px;
+}
+
+.booking-overview-title{
+    margin-bottom:25px;
+    font-size:28px;
+    font-weight:800;
+}
+
+.booking-status-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.booking-status-card{
+    padding:30px;
+    border-radius:24px;
+    background:rgba(15,23,42,.8);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.booking-status-label{
+    font-size:17px;
+    font-weight:700;
+}
+
+.booking-status-value{
+    margin-top:15px;
+    font-size:42px;
+    font-weight:900;
+}
+
+/* =========================
+STATUS COLORS
+========================= */
+
+.booking-confirmed{
+    border-color:rgba(34,197,94,.4);
+}
+
+.booking-confirmed .booking-status-label{
+    color:#4ade80;
+}
+
+.booking-pending{
+    border-color:rgba(250,204,21,.4);
+}
+
+.booking-pending .booking-status-label{
+    color:#facc15;
+}
+
+.booking-cancelled{
+    border-color:rgba(239,68,68,.4);
+}
+
+.booking-cancelled .booking-status-label{
+    color:#f87171;
+}
+
+/* =========================
+QUICK ACTIONS
+========================= */
+
+.quick-actions-title{
+    margin-bottom:25px;
+    font-size:28px;
+    font-weight:800;
+}
+
+.quick-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.quick-action-btn{
+    padding:15px 28px;
+    border-radius:16px;
+    font-size:16px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.quick-action-primary{
+    background:
+        linear-gradient(135deg,#2563eb,#38bdf8);
+    color:#fff;
+    box-shadow:
+        0 15px 35px rgba(37,99,235,.35);
+}
+
+.quick-action-primary:hover{
+    transform:translateY(-3px);
+}
+
+.quick-action-secondary{
+    background:rgba(15,23,42,.8);
+    border:1px solid rgba(96,165,250,.25);
+    color:#fff;
+}
+
+.quick-action-secondary:hover{
+    border-color:#60a5fa;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .dashboard-stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .booking-status-grid{
+        grid-template-columns:1fr;
+    }
+
+    .admin-dashboard-title{
+        font-size:36px;
+    }
+
+}

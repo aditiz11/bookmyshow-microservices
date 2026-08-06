@@ -1,0 +1,76 @@
+/* =========================
+MOVIES PAGE
+========================= */
+
+.movies-page{
+    min-height:100vh;
+    padding:50px 60px 80px;
+    background:
+        radial-gradient(circle at top left,rgba(59,130,246,.18),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(14,165,233,.15),transparent 35%),
+        linear-gradient(180deg,#020617,#000814,#0f172a);
+}
+
+.movies-header{
+    margin-bottom:50px;
+    text-align:center;
+    animation:fadeIn .6s ease;
+}
+
+.movies-title{
+    font-size:52px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:#fff;
+    text-shadow:0 0 30px rgba(59,130,246,.35);
+}
+
+.movies-subtitle{
+    margin-top:14px;
+    font-size:18px;
+    color:#94a3b8;
+}
+
+.movies-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:34px;
+    align-items:start;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+    .movies-page{
+        padding:40px 25px 60px;
+    }
+
+    .movies-title{
+        font-size:40px;
+    }
+
+    .movies-grid{
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    }
+}
+
+@media(max-width:600px){
+    .movies-page{
+        padding:30px 20px 50px;
+    }
+
+    .movies-title{
+        font-size:34px;
+    }
+
+    .movies-subtitle{
+        font-size:16px;
+    }
+
+    .movies-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+    }
+}

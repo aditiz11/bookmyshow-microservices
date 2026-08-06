@@ -44,6 +44,16 @@ spring:
                     redis-rate-limiter.requestedTokens: 1
                     key-resolver: "#{@userKeyResolver}"
 
+            - id: payment-service
+              uri: lb://payment-service
+              predicates:
+                - Path=/api/payments/**
+
+            - id: admin-api
+              uri: lb://booking-service
+              predicates:
+                - Path=/api/admin/**
+
 eureka:
   client:
     service-url:

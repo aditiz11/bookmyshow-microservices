@@ -16,6 +16,9 @@ public class MovieServiceClient {
     private String movieServiceUrl;
 
     public MovieResponse getMovieById(Long movieId){
+
+        System.out.println("Calling: " + movieServiceUrl + "/api/movies/" + movieId);
+
         return restClient
                 .get()
                 .uri(

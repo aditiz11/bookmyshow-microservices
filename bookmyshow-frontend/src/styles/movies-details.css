@@ -1,0 +1,123 @@
+/* =========================
+MOVIE DETAILS PAGE
+========================= */
+
+.movie-details-page{
+    min-height:100vh;
+    color:#fff;
+    background:
+        radial-gradient(circle at top left,rgba(37,99,235,.35),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(124,58,237,.25),transparent 35%),
+        linear-gradient(135deg,#020617,#0f172a,#111827);
+}
+
+.movie-details-wrapper{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    padding:70px 80px 100px;
+}
+
+.movie-info-card{
+    width:100%;
+    max-width:1200px;
+    padding:45px;
+    border-radius:32px;
+    background:linear-gradient(145deg,rgba(30,41,59,.8),rgba(15,23,42,.55));
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(148,163,184,.18);
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.7),
+        0 0 40px rgba(59,130,246,.15);
+    transition:.3s ease;
+}
+
+.movie-info-card:hover{
+    transform:translateY(-5px);
+    box-shadow:
+        0 50px 120px rgba(0,0,0,.8),
+        0 0 60px rgba(59,130,246,.25);
+}
+
+/* =========================
+BOOK BUTTON
+========================= */
+
+.book-button-wrapper{
+    display:flex;
+    justify-content:flex-start;
+    margin-top:40px;
+}
+
+.book-ticket-button{
+    padding:16px 45px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 15px 40px rgba(37,99,235,.4);
+}
+
+.book-ticket-button:hover{
+    transform:translateY(-3px) scale(1.03);
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    box-shadow:0 20px 50px rgba(59,130,246,.55);
+}
+
+/* =========================
+EMPTY STATE
+========================= */
+
+.empty-page{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    font-size:32px;
+    font-weight:900;
+    color:#fff;
+    background:linear-gradient(135deg,#020617,#0f172a);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+    .movie-details-wrapper{
+        padding:40px 24px 60px;
+    }
+
+    .movie-info-card{
+        padding:32px;
+    }
+}
+
+@media(max-width:768px){
+    .movie-details-wrapper{
+        padding:24px 16px 40px;
+    }
+
+    .movie-info-card{
+        padding:24px;
+        border-radius:24px;
+    }
+
+    .book-button-wrapper{
+        justify-content:center;
+    }
+
+    .book-ticket-button{
+        width:100%;
+    }
+
+    .empty-page{
+        padding:20px;
+        text-align:center;
+        font-size:24px;
+    }
+}

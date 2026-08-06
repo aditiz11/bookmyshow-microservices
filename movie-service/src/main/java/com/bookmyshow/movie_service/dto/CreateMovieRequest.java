@@ -20,4 +20,7 @@ public class CreateMovieRequest {
 
     @NotBlank
     private String description;
+
+    @NotBlank
+    private String posterUrl;
 }

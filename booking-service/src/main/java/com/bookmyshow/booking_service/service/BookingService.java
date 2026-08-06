@@ -6,8 +6,12 @@ import com.bookmyshow.booking_service.dto.CreateBookingRequest;
 import java.util.List;
 
 public interface BookingService {
-    BookingResponse createBooking(CreateBookingRequest request);
+    BookingResponse createBooking(
+            CreateBookingRequest request,
+            Long userId
+    );
     BookingResponse getBookingById(Long id);
     List<BookingResponse> getBookingsByUserId(Long userId);
-   
+    BookingResponse cancelBooking(Long bookingId);
+    List<BookingResponse> getAllBookings();
 }

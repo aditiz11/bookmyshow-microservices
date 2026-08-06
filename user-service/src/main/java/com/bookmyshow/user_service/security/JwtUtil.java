@@ -22,10 +22,12 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String email, String role) {
+    public String generateToken(Long userId, String email, String role) {
 
         Map<String, Object> claims = new HashMap<>();
+
         claims.put("role", role);
+        claims.put("userId", userId);
 
         return Jwts.builder()
                 .claims(claims)

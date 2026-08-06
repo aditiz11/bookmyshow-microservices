@@ -11,6 +11,7 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
+import com.bookmyshow.booking_service.event.RefundCompletedEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -97,6 +98,46 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<
                 String,
                 PaymentFailedEvent> factory =
+                new ConcurrentKafkaListenerContainerFactory<>();
+
+        factory.setConsumerFactory(consumerFactory);
+
+        return factory;
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, RefundCompletedEvent>
+    refundKafkaListenerContainerFactory() {
+
+        Map<String, Object> props = new HashMap<>();
+
+        props.put(
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                kafkaProperties.getBootstrapServers().get(0)
+        );
+
+        props.put(
+                ConsumerConfig.GROUP_ID_CONFIG,
+                "booking-group"
+        );
+
+        JsonDeserializer<RefundCompletedEvent> deserializer =
+                new JsonDeserializer<>(RefundCompletedEvent.class);
+
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeHeaders(false);
+
+        DefaultKafkaConsumerFactory<String, RefundCompletedEvent>
+                consumerFactory =
+                new DefaultKafkaConsumerFactory<>(
+                        props,
+                        new StringDeserializer(),
+                        deserializer
+                );
+
+        ConcurrentKafkaListenerContainerFactory<
+                String,
+                RefundCompletedEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
 
         factory.setConsumerFactory(consumerFactory);

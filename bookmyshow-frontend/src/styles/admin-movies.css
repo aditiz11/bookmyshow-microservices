@@ -1,0 +1,273 @@
+/* =========================
+ADMIN FORM
+========================= */
+
+.admin-form-card{
+    max-width:850px;
+    margin:auto;
+    padding:40px;
+    border-radius:24px;
+    background:
+        linear-gradient(145deg,#0f172a,#111827);
+    border:1px solid rgba(59,130,246,.18);
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.admin-form-header{
+    margin-bottom:32px;
+}
+
+.admin-form-title{
+    font-size:2rem;
+    font-weight:800;
+    color:#fff;
+}
+
+.admin-form-subtitle{
+    margin-top:8px;
+    color:#94a3b8;
+}
+
+.admin-form{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.admin-form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+/* =========================
+INPUTS
+========================= */
+
+.admin-input,
+.admin-textarea{
+    width:100%;
+    padding:16px 18px;
+    border-radius:16px;
+    background:rgba(15,23,42,.7);
+    border:1px solid rgba(59,130,246,.2);
+    color:#fff;
+    transition:.3s;
+}
+
+.admin-input:focus,
+.admin-textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 20px rgba(59,130,246,.3);
+}
+
+.admin-textarea{
+    resize:none;
+    min-height:140px;
+}
+
+/* =========================
+POSTER PREVIEW
+========================= */
+
+.poster-preview-title{
+    margin-bottom:16px;
+    font-weight:700;
+    color:#cbd5e1;
+}
+
+.poster-preview-image{
+    width:170px;
+    border-radius:18px;
+    border:1px solid rgba(59,130,246,.25);
+    box-shadow:0 18px 35px rgba(0,0,0,.45);
+}
+
+/* =========================
+SUBMIT BUTTON
+========================= */
+
+.admin-submit-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    background:
+        linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 12px 35px rgba(37,99,235,.35);
+}
+
+.admin-submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(37,99,235,.5);
+}
+
+/* =========================
+ADMIN TABLE
+========================= */
+
+.admin-table-card{
+    overflow:hidden;
+    border-radius:24px;
+    background:
+        linear-gradient(145deg,#0f172a,#111827);
+    border:1px solid rgba(59,130,246,.18);
+    box-shadow:0 20px 55px rgba(0,0,0,.45);
+}
+
+.admin-table-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:30px;
+    border-bottom:1px solid rgba(59,130,246,.12);
+}
+
+.admin-table-title{
+    font-size:1.8rem;
+    font-weight:800;
+    color:#fff;
+}
+
+.admin-table-subtitle{
+    margin-top:6px;
+    color:#94a3b8;
+}
+
+.admin-count-pill{
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(37,99,235,.15);
+    color:#60a5fa;
+    font-weight:700;
+}
+
+.admin-table-wrapper{
+    overflow-x:auto;
+}
+
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.admin-table th{
+    padding:20px;
+    background:#0b1120;
+    color:#94a3b8;
+    text-align:left;
+    font-size:.85rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+}
+
+.admin-table td{
+    padding:20px;
+    border-top:1px solid rgba(59,130,246,.08);
+}
+
+.admin-table tbody tr{
+    transition:.3s;
+}
+
+.admin-table tbody tr:hover{
+    background:rgba(59,130,246,.06);
+}
+
+/* =========================
+MOVIE TABLE
+========================= */
+
+.movie-table-poster{
+    width:70px;
+    height:105px;
+    object-fit:cover;
+    border-radius:14px;
+    box-shadow:0 12px 25px rgba(0,0,0,.4);
+}
+
+.movie-name{
+    font-size:1.05rem;
+    font-weight:700;
+    color:#fff;
+}
+
+.movie-id{
+    margin-top:4px;
+    font-size:.85rem;
+    color:#64748b;
+}
+
+.movie-badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(37,99,235,.15);
+    color:#93c5fd;
+    font-weight:600;
+}
+
+/* =========================
+MOVIE ACTIONS
+========================= */
+
+.movie-action-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+}
+
+.movie-edit-btn,
+.movie-delete-btn{
+    padding:10px 18px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.movie-edit-btn{
+    background:#2563eb;
+    color:#fff;
+}
+
+.movie-edit-btn:hover{
+    background:#1d4ed8;
+}
+
+.movie-delete-btn{
+    border:none;
+    cursor:pointer;
+    background:#dc2626;
+    color:#fff;
+}
+
+.movie-delete-btn:hover{
+    background:#b91c1c;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .admin-form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .admin-table-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+    }
+
+    .admin-form-card{
+        padding:25px;
+    }
+}

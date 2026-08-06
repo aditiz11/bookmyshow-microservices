@@ -1,0 +1,200 @@
+/* =========================
+MY BOOKINGS PAGE
+========================= */
+
+.my-bookings-page{
+    min-height:100vh;
+    padding:60px 70px;
+    background:
+        linear-gradient(135deg,#020617,#020617,#0f172a);
+}
+
+.my-bookings-wrapper{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.my-bookings-heading{
+    font-size:48px;
+    font-weight:900;
+    color:#fff;
+    margin-bottom:45px;
+}
+
+.my-bookings-list{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+/* =========================
+BOOKING CARD
+========================= */
+
+.movie-booking-card{
+    padding:30px;
+    border-radius:30px;
+    background:
+        rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 30px 70px rgba(0,0,0,.6);
+    transition:.3s;
+}
+
+.movie-booking-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 40px 90px rgba(0,0,0,.8);
+}
+
+.movie-booking-main{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+/* =========================
+MOVIE DETAILS
+========================= */
+
+.booking-movie-poster{
+    width:130px;
+    height:190px;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,.7);
+}
+
+.booking-movie-details{
+    flex:1;
+}
+
+.booking-movie-details h2{
+    font-size:30px;
+    font-weight:900;
+    color:#fff;
+}
+
+.booking-movie-details p{
+    margin-top:8px;
+    color:#94a3b8;
+}
+
+.booking-id{
+    margin-top:15px!important;
+    color:#38bdf8!important;
+}
+
+/* =========================
+STATUS
+========================= */
+
+.booking-status{
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:800;
+    color:#fff;
+}
+
+.booking-status-confirmed{
+    background:#16a34a;
+}
+
+.booking-status-pending{
+    background:#ca8a04;
+}
+
+.booking-status-cancelled{
+    background:#dc2626;
+}
+
+/* =========================
+BOOKING INFORMATION
+========================= */
+
+.booking-information{
+    margin-top:30px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.12);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.booking-information span{
+    display:block;
+    color:#94a3b8;
+}
+
+.booking-information strong{
+    display:block;
+    margin-top:8px;
+    color:#fff;
+    font-size:22px;
+}
+
+/* =========================
+EMPTY STATE
+========================= */
+
+.my-bookings-empty{
+    padding:60px;
+    text-align:center;
+    border-radius:30px;
+    background:
+        rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.my-bookings-empty h2{
+    font-size:32px;
+    color:#fff;
+}
+
+.my-bookings-empty p{
+    margin-top:10px;
+    color:#94a3b8;
+}
+
+/* =========================
+LOADING
+========================= */
+
+.my-bookings-loading{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#020617;
+    color:#38bdf8;
+    font-size:30px;
+    font-weight:900;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .my-bookings-page{
+        padding:25px;
+    }
+
+    .movie-booking-main{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .booking-information{
+        grid-template-columns:1fr;
+    }
+
+    .my-bookings-heading{
+        font-size:36px;
+    }
+}
