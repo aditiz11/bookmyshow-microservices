@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { getDashboardStats } from "../api/dashboardApi";
-import DashboardCard from "../components/admin/DashboardCard";
 
 function AdminDashboard(){
 
