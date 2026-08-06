@@ -384,13 +384,13 @@ Movie discovery interface displaying available movies.
 
 Complete booking flow with movie information and seat selection.
 
-```
+
 
 <img width="1920" height="1080" alt="Screenshot 2026-08-05 203621" src="https://github.com/user-attachments/assets/8a05178f-63a7-44de-99c3-e4bf839f3ea5" />
 
 <img width="1920" height="1080" alt="Screenshot (42)" src="https://github.com/user-attachments/assets/3e004ade-ba3f-46c9-a17d-da435e06a659" /><img width="1920" height="1020" alt="Screenshot 2026-08-06 154645" src="https://github.com/user-attachments/assets/c2afb325-da52-4d10-9fc5-20fc4926f382" />
 
-```
+
 
 ---
 
@@ -398,10 +398,10 @@ Complete booking flow with movie information and seat selection.
 
 Successful ticket confirmation after booking completion.
 
-```
+
 <img width="1920" height="1020" alt="Screenshot 2026-08-06 154645" src="https://github.com/user-attachments/assets/e57c514f-99a2-4ecc-af0b-683c32f3c005" />
 
-```
+
 
 ---
 
@@ -409,11 +409,11 @@ Successful ticket confirmation after booking completion.
 
 Dashboard displaying movies, bookings, payments, and revenue statistics.
 
-```
+
 
 <img width="1920" height="1080" alt="Screenshot (50)" src="https://github.com/user-attachments/assets/4ede7bc1-7326-4da8-96c4-f7c2e5a90f44" />
 
-```
+
 
 ---
 
@@ -421,11 +421,11 @@ Dashboard displaying movies, bookings, payments, and revenue statistics.
 
 Kafka based booking and payment event communication.
 
-```
+
 <img width="563" height="43" alt="Screenshot 2026-08-05 210214" src="https://github.com/user-attachments/assets/d22fc1d9-63a9-4622-8679-d1f518a0a24e" />
 
 
-```
+
 
 ---
 
@@ -433,7 +433,7 @@ Kafka based booking and payment event communication.
 
 Temporary seat reservation using Redis.
 
-```
+
 
 <img width="716" height="146" alt="Screenshot 2026-08-05 210241" src="https://github.com/user-attachments/assets/b9d315f7-5c07-446d-b523-14b3bb39d3a6" />
 
@@ -442,7 +442,7 @@ Temporary seat reservation using Redis.
 <img width="335" height="92" alt="Screenshot 2026-08-05 210253" src="https://github.com/user-attachments/assets/2be461eb-74da-4770-98ba-e6e0623926a8" />
 
 
-```
+
 
 ---
 
@@ -450,13 +450,13 @@ Temporary seat reservation using Redis.
 
 Seat release after booking cancellation.
 
-```
+
 
 <img width="563" height="49" alt="Screenshot 2026-08-05 210204" src="https://github.com/user-attachments/assets/03aeccb8-be6e-4b3c-bbd9-8e396a298c4d" />
 
 <img width="354" height="121" alt="Screenshot 2026-08-05 210312" src="https://github.com/user-attachments/assets/09e2f59a-9ab1-4d92-b512-bf1d13a810fc" />
 
-```
+
 
 ---
 
@@ -464,21 +464,18 @@ Seat release after booking cancellation.
 
 Microservice registration and service discovery.
 
-```
+
 
 <img width="1920" height="1020" alt="Screenshot 2026-08-05 204756" src="https://github.com/user-attachments/assets/46860164-8c8a-454c-a23b-ad00c0ae96b1" />
 
-```
+
 
 ## 📈 ZipKin Tracing
 
 Application api Endpoints and monitoring dashboard.
 
-```
+
 <img width="1920" height="1020" alt="Screenshot 2026-08-05 204739" src="https://github.com/user-attachments/assets/5b5aa5fc-9fad-4921-aef1-a2d9fa54e76b" />
-
-
-```
 
 
 ---
@@ -487,10 +484,9 @@ Application api Endpoints and monitoring dashboard.
 
 Application metrics and monitoring dashboard.
 
-```
+
 <img width="1920" height="1020" alt="Screenshot 2026-08-05 210438" src="https://github.com/user-attachments/assets/c79b557f-45dd-4498-827b-13166a59908a" />
 
-```
 
 ---
 
