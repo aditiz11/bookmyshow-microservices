@@ -375,7 +375,8 @@ README.md
 Movie discovery interface displaying available movies.
 
 ```
-docs/screenshots/home.png
+<img width="1920" height="1080" alt="Screenshot 2026-08-05 203513" src="https://github.com/user-attachments/assets/65ddb130-a62d-4478-ba6a-43ffeab71f09" />
+
 ```
 
 ---
@@ -385,7 +386,11 @@ docs/screenshots/home.png
 Complete booking flow with movie information and seat selection.
 
 ```
-docs/screenshots/movie-details-seat-selection.png
+
+<img width="1920" height="1080" alt="Screenshot 2026-08-05 203621" src="https://github.com/user-attachments/assets/8a05178f-63a7-44de-99c3-e4bf839f3ea5" />
+
+<img width="1920" height="1080" alt="Screenshot (42)" src="https://github.com/user-attachments/assets/3e004ade-ba3f-46c9-a17d-da435e06a659" /><img width="1920" height="1020" alt="Screenshot 2026-08-06 154645" src="https://github.com/user-attachments/assets/c2afb325-da52-4d10-9fc5-20fc4926f382" />
+
 ```
 
 ---
@@ -395,7 +400,8 @@ docs/screenshots/movie-details-seat-selection.png
 Successful ticket confirmation after booking completion.
 
 ```
-docs/screenshots/booking-success.png
+<img width="1920" height="1020" alt="Screenshot 2026-08-06 154645" src="https://github.com/user-attachments/assets/e57c514f-99a2-4ecc-af0b-683c32f3c005" />
+
 ```
 
 ---
@@ -405,7 +411,9 @@ docs/screenshots/booking-success.png
 Dashboard displaying movies, bookings, payments, and revenue statistics.
 
 ```
-docs/screenshots/admin-dashboard.png
+
+<img width="1920" height="1080" alt="Screenshot (50)" src="https://github.com/user-attachments/assets/4ede7bc1-7326-4da8-96c4-f7c2e5a90f44" />
+
 ```
 
 ---
@@ -415,7 +423,9 @@ docs/screenshots/admin-dashboard.png
 Kafka based booking and payment event communication.
 
 ```
-docs/screenshots/saga-workflow.png
+<img width="563" height="43" alt="Screenshot 2026-08-05 210214" src="https://github.com/user-attachments/assets/d22fc1d9-63a9-4622-8679-d1f518a0a24e" />
+
+
 ```
 
 ---
@@ -425,7 +435,14 @@ docs/screenshots/saga-workflow.png
 Temporary seat reservation using Redis.
 
 ```
-docs/screenshots/redis-seat-locking.png
+
+<img width="716" height="146" alt="Screenshot 2026-08-05 210241" src="https://github.com/user-attachments/assets/b9d315f7-5c07-446d-b523-14b3bb39d3a6" />
+
+<img width="563" height="43" alt="Screenshot 2026-08-05 210214" src="https://github.com/user-attachments/assets/46c99732-6144-4056-8ac8-439579da8e96" />
+
+<img width="335" height="92" alt="Screenshot 2026-08-05 210253" src="https://github.com/user-attachments/assets/2be461eb-74da-4770-98ba-e6e0623926a8" />
+
+
 ```
 
 ---
@@ -435,7 +452,11 @@ docs/screenshots/redis-seat-locking.png
 Seat release after booking cancellation.
 
 ```
-docs/screenshots/redis-seat-unlock.png
+
+<img width="563" height="49" alt="Screenshot 2026-08-05 210204" src="https://github.com/user-attachments/assets/03aeccb8-be6e-4b3c-bbd9-8e396a298c4d" />
+
+<img width="354" height="121" alt="Screenshot 2026-08-05 210312" src="https://github.com/user-attachments/assets/09e2f59a-9ab1-4d92-b512-bf1d13a810fc" />
+
 ```
 
 ---
@@ -445,8 +466,21 @@ docs/screenshots/redis-seat-unlock.png
 Microservice registration and service discovery.
 
 ```
-docs/screenshots/eureka-dashboard.png
+
+<img width="1920" height="1020" alt="Screenshot 2026-08-05 204756" src="https://github.com/user-attachments/assets/46860164-8c8a-454c-a23b-ad00c0ae96b1" />
+
 ```
+
+## 📈 ZipKin Tracing
+
+Application api Endpoints and monitoring dashboard.
+
+```
+<img width="1920" height="1020" alt="Screenshot 2026-08-05 204739" src="https://github.com/user-attachments/assets/5b5aa5fc-9fad-4921-aef1-a2d9fa54e76b" />
+
+
+```
+
 
 ---
 
@@ -455,7 +489,8 @@ docs/screenshots/eureka-dashboard.png
 Application metrics and monitoring dashboard.
 
 ```
-docs/screenshots/grafana-dashboard.png
+<img width="1920" height="1020" alt="Screenshot 2026-08-05 210438" src="https://github.com/user-attachments/assets/c79b557f-45dd-4498-827b-13166a59908a" />
+
 ```
 
 ---
