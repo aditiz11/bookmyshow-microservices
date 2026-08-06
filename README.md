@@ -374,10 +374,9 @@ README.md
 
 Movie discovery interface displaying available movies.
 
-```
+
 <img width="1920" height="1080" alt="Screenshot 2026-08-05 203513" src="https://github.com/user-attachments/assets/65ddb130-a62d-4478-ba6a-43ffeab71f09" />
 
-```
 
 ---
 
